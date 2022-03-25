@@ -7,7 +7,9 @@ const AuthContextdata = {
     client : {},
     signIn: ({value}) => {},
     signOut: () => {},
-    signUp: ({value}) => {}
+    signUp: ({value}) => {},
+    showDiary : false,
+    handleShowDiary : ({value}) => {}
 };
 
 const AuthContext = createContext(AuthContextdata);
@@ -15,6 +17,7 @@ const AuthContext = createContext(AuthContextdata);
 export const AuthProvider = ({children}) => {
     const [client, setClient] = useState({});
     const [signed, setSigned] = useState(false);
+    const [showDiary, setShowDiary] = useState(false);
 
     useEffect(() => {
         async function loadStoragedData(){
@@ -64,8 +67,14 @@ export const AuthProvider = ({children}) => {
         });
     }
 
+    async function handleShowDiary(value) {
+        setShowDiary(value);
+
+        return;
+    }
+
     return(
-        <AuthContext.Provider value={{ signed, client, signIn, signOut, signUp }}>
+        <AuthContext.Provider value={{ signed, client, signIn, signOut, signUp, showDiary, setShowDiary }}>
             {children}
         </AuthContext.Provider>
     );

@@ -8,7 +8,8 @@ import { LinearProgress } from '@material-ui/core';
 import MainPage from './MainPage';
 import RouteReportPage from './reports/RouteReportPage';
 import UserPage from './UserPage';
-import SocketController from './SocketController';
+import WeatherList from './WeatherList';
+import DiaryPage from './DiaryPage';
 import NotificationsPage from './settings/NotificationsPage';
 import NotificationPage from './settings/NotificationPage';
 import GroupsPage from './settings/GroupsPage';
@@ -47,7 +48,6 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <AuthProvider>
         <CssBaseline />
-        <SocketController />
         <CachingController />
         <Switch>
           <Route exact path="/login" component={LoginForm} />
@@ -77,6 +77,8 @@ const App = () => {
                 <Route exact path="/reports/stop" component={StopReportPage} />
                 <Route exact path="/reports/summary" component={SummaryReportPage} />
                 <Route exact path="/reports/chart" component={ChartReportPage} />
+                <Route exact path="/weather" component={WeatherList} />
+                <Route exact path="/diary" component={DiaryPage} />
               </Switch>
             )}
           </Route>

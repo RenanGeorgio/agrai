@@ -66,7 +66,7 @@ const BottomNav = ({ showOnDesktop }) => {
         <Toolbar className={classes.toolbar} disableGutters>
 
           {isDesktop ? (
-            <NavLink location="/replay">
+            <NavLink location="/weather">
               <WbSunnyIcon />
               <span>Monitoramento <br /> Climatico</span>
             </NavLink>
@@ -77,12 +77,12 @@ const BottomNav = ({ showOnDesktop }) => {
             </NavLink>
           )}
 
-          <NavLink location="/reports/route">
+          <NavLink location="/reports/chart">
             <DescriptionIcon />
             {t('reportTitle')}
           </NavLink>
 
-          <NavLink location="/settings/notifications">
+          <NavLink location="/diary">
             <TodayIcon />
             <span>Agenda do <br /> Campo</span>
           </NavLink>

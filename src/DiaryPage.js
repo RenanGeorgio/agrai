@@ -12,19 +12,16 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ListIcon from '@material-ui/icons/ViewList';
 import Fab from '@material-ui/core/Fab';
 
-import GeofencesList from './GeofencesList';
 import Map from './map/Map';
-import SatelliteMap from './map/SatelliteMap';
 import SelectedDeviceMap from './map/SelectedDeviceMap';
 import AccuracyMap from './map/AccuracyMap';
 import GeofenceMap from './map/GeofenceMap';
 import CurrentPositionsMap from './map/CurrentPositionsMap';
 import CurrentLocationMap from './map/CurrentLocationMap';
-import BottomNav from './components/BottomNav';
 import t from './common/localization';
 import { sessionActions } from './store';
 import AuthContext from "./contexts/auth";
-import AddFarmNotes from './components/addFarmNotes';
+import Diary from './components/Diary';
 import DiaryNotes from './components/DiaryNotes';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -105,26 +102,6 @@ const useStyles = makeStyles((theme) => ({
     bottom: theme.spacing(0),
     right: '0px',
     position: 'fixed',
-    borderRadius: '50%',
-    backgroundColor: 'secondary',
-    [theme.breakpoints.up('lg')]: {
-      right: theme.spacing(1.5),
-      bottom: theme.spacing(2.5),
-      marginTop: theme.spacing(2),
-      marginBottom: theme.spacing(1)
-    },
-  },
-  fabIcon: {
-    display: 'flex',
-    flexDirection: 'column',
-    fontSize: '0.75rem',
-    fontWeight: 'normal',
-    borderRadius: '50%'
-  },
-  fablock: {
-    bottom: theme.spacing(0),
-    right: '0px',
-    position: 'fixed',
     backgroundColor: 'secondary',
     [theme.breakpoints.up('lg')]: {
       right: theme.spacing(5.5),
@@ -144,7 +121,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const MainPage = () => {
+const DiaryPage = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
   const history = useHistory();
@@ -196,7 +173,7 @@ const MainPage = () => {
           onClick={handleClose}
           >
             <ListIcon />
-            <div className={classes.sidebarToggleText}>Geocerca</div>
+            <div className={classes.sidebarToggleText}>Agenda do Campo</div>
         </IconButton>
         <Typography variant="h6" className={classes.title}>
          
@@ -210,55 +187,18 @@ const MainPage = () => {
         <CurrentPositionsMap />
         <SelectedDeviceMap />
       </Map>
-      <Paper elevation={3} className={`${classes.sidebar} ${collapsed && classes.sidebarCollapsed}`}>
-        <Paper className={classes.paper} square elevation={3}>
-          <Toolbar className={classes.toolbar} disableGutters>
-            {isTablet && (
-            <IconButton onClick={handleClose}>
-              <ArrowBackIcon />
-            </IconButton>
-            )}
-            <TextField
-              fullWidth
-              name="deviceName"
-              value={deviceName}
-              autoComplete="deviceName"
-              autoFocus
-              onChange={(event) => setDeviceName(event.target.value)}
-              placeholder="Encontrar geocerca"
-              variant="filled"
-            />
-            <IconButton onClick={() => history.push('/device')}>
-              <AddIcon />
-            </IconButton>
-            {!isTablet && (
-            <IconButton onClick={handleClose}>
-              <CloseIcon />
-            </IconButton>
-            )}
-          </Toolbar>
-        </Paper>
-        <div className={classes.deviceList}>
-          <GeofencesList />
-        </div>
+      <Paper elevation={3} className={classes.sidebar}>
+        <Diary className={classes.sidebar} />
       </Paper>
-      {!showDiary ? (
+      {showDiary && (
         <Paper elevation={3} className={classes.fab}>
-          <Paper className={classes.fabIcon} elevation={3}>
-            <AddFarmNotes />
-          </Paper>
-        </Paper>
-      ) : (
-        <Paper elevation={3} className={classes.fablock}>
           <Paper className={classes.fabDiary} elevation={3}>
             <DiaryNotes />
           </Paper>
         </Paper>
       )}
-      
-      <BottomNav showOnDesktop />
     </div>
   );
 };
 
-export default MainPage;
+export default DiaryPage;

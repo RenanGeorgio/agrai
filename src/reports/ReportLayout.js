@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   drawer: {
     width: theme.dimensions.drawerWidthDesktop,
-    backgroundColor: '#ffff00',
+    backgroundColor: '#50b848', 
     color: 'black',
     [theme.breakpoints.down('md')]: {
       width: theme.dimensions.drawerWidthTablet,
@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
   content: {
     flex: 1,
     padding: theme.spacing(5, 3, 3, 3),
-    backgroundColor: '#ffff8a',
+    backgroundColor: '#83d67c',
     boxShadow: '-4px -4px 16px rgba(0, 0, 0, 0.25)',
   },
   drawerHeader: {
@@ -56,12 +56,12 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const routes = [
-  { name: t('reportRoute'), href: '/reports/route', icon: <TimelineIcon /> },
-  { name: t('reportEvents'), href: '/reports/event', icon: <NotificationsActiveIcon /> },
-  { name: t('reportTrips'), href: '/reports/trip', icon: <PlayCircleFilledIcon /> },
-  { name: t('reportStops'), href: '/reports/stop', icon: <PauseCircleFilledIcon /> },
-  { name: t('reportSummary'), href: '/reports/summary', icon: <FormatListBulletedIcon /> },
-  { name: t('reportChart'), href: '/reports/chart', icon: <TrendingUpIcon /> },
+  { name: 'Relatorio 1', href: '/reports/route', icon: <TimelineIcon /> },
+  { name: 'Relatorio 2', href: '/reports/event', icon: <NotificationsActiveIcon /> },
+  { name: 'Relatorio 3', href: '/reports/trip', icon: <PlayCircleFilledIcon /> },
+  { name: 'Relatorio 4', href: '/reports/stop', icon: <PauseCircleFilledIcon /> },
+  { name: 'Relatorio 5', href: '/reports/summary', icon: <FormatListBulletedIcon /> },
+  { name: 'Relatorio 6', href: '/reports/chart', icon: <TrendingUpIcon /> },
 ];
 
 const ReportLayout = ({ children, filter }) => {
